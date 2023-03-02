@@ -3,8 +3,8 @@ from msrest.authentication import BasicAuthentication
 from azure.devops.v6_0.work_item_tracking.models import JsonPatchOperation
 from azure.devops.v6_0.work_item_tracking.models import Wiql
 # Replace with your organization URL and personal access token
-url = 'https://dev.azure.com/vasanthan297'
-personal_access_token = 'km4ubbnhyymcb7w3om5vnqnyxvcphco6y5pn662suku2oava7g3q'
+url = 'https://dev.azure.com/'
+personal_access_token = ''
 
 # Create a connection to Azure DevOps using the API and authentication
 credentials = BasicAuthentication('', personal_access_token)
