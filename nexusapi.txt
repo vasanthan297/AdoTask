@@ -1,0 +1,21 @@
+Vulnerability Details API:
+
+Endpoint: https://<your-nexus-iq-url>/api/v2/vulnerability
+Method: GET
+Required parameters: vulnerability ID
+Policy Evaluation API:
+
+Endpoint: https://<your-nexus-iq-url>/api/v2/components/<component-id>/policyEvaluation
+Method: GET
+Required parameters: component ID
+Application Composition Report API:
+
+Endpoint: https://<your-nexus-iq-url>/api/v2/reports/applications/<application-id>/composition
+Method: GET
+Required parameters: application ID
+Component Details API:
+
+Endpoint: https://<your-nexus-iq-url>/api/v2/components/details
+Method: GET
+Required parameters: component ID
+Note that you will need to replace <your-nexus-iq-url> with the URL of your Nexus IQ server and provide the required parameters for each API endpoint.
