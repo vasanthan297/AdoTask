@@ -1,0 +1,36 @@
+import requests
+
+# Set the URL of the SonarQube server and the API endpoint
+sonarqube_url = "http://localhost:9000"
+api_endpoint = "/api/issues/search"
+
+# Set the parameters for the API call
+params = {
+    "projectKeys": "my_project_key",
+    "types": "VULNERABILITY",
+    "severities": "CRITICAL,MAJOR",
+    "statuses": "OPEN",
+    "componentKeys": "my_project_key:my_component_key"
+}
+
+# Set the authentication token (if required)
+auth_token = "my_auth_token"
+
+# Set the headers for the API call
+headers = {
+    "Authorization": f"Bearer {auth_token}" if auth_token else "",
+    "Content-Type": "application/json"
+}
+
+# Send the API request
+response = requests.get(f"{sonarqube_url}{api_endpoint}", params=params, headers=headers)
+
+# Check if the API call was successful
+if response.status_code == 200:
+    # Parse the JSON response
+    response_json = response.json()
+    # Process the response data as needed
+    print(response_json)
+else:
+    # Handle the error
+    print(f"API call failed with status code {response.status_code}")
