@@ -1,0 +1,1 @@
+pip install git+https://github.com/microsoft/sarif-sdk.git#subdirectory=src/Tools/sarif2html/python
