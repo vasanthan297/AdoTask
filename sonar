@@ -34,3 +34,68 @@ if response.status_code == 200:
 else:
     # Handle the error
     print(f"API call failed with status code {response.status_code}")
+    
+    
+    
+    
+import requests
+
+# Set up the API call parameters
+sonarqube_url = "http://localhost:9000"
+project_key = "my_project_key"
+auth_token = "my_auth_token"
+
+# Set up the API endpoint
+api_endpoint = f"{sonarqube_url}/api/issues/search"
+
+# Set up the API call headers and parameters
+headers = {"Authorization": f"Bearer {auth_token}"}
+params = {
+    "componentKeys": project_key,
+    "rules": "cwe,owasp-top10",
+    "statuses": "OPEN,REOPENED",
+    "severities": "CRITICAL,MAJOR",
+}
+
+# Make the API call and retrieve the vulnerability data
+response = requests.get(api_endpoint, headers=headers, params=params)
+vulnerability_data = response.json()
+
+# Extract the status of each vulnerability
+for issue in vulnerability_data["issues"]:
+    status = issue["status"]
+    print(status)
+
+
+
+
+
+
+
+import requests
+
+# Set up the API call parameters
+sonarqube_url = "http://localhost:9000"
+auth_token = "my_auth_token"
+issue_key = "my_issue_key"
+
+# Set up the API endpoint
+api_endpoint = f"{sonarqube_url}/api/issues/{issue_key}/reopen"
+
+# Set up the API call headers
+headers = {"Authorization": f"Bearer {auth_token}"}
+
+# Make the API call to reopen the issue
+response = requests.put(api_endpoint, headers=headers)
+
+# Check if the API call was successful
+if response.ok:
+    print("Issue reopened successfully")
+else:
+    print("Failed to reopen issue")
+
+
+
+
+
+
