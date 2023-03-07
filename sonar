@@ -98,4 +98,10 @@ else:
 
 
 
+df = pd.read_json(json_data)
 
+# convert the DataFrame to HTML
+html = df.to_html()
+
+# print the HTML output
+print(html)
