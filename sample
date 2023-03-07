@@ -1,1 +1,26 @@
 pip install git+https://github.com/microsoft/sarif-sdk.git#subdirectory=src/Tools/sarif2html/python
+
+
+import json
+from pysarif import SARIFLogger
+
+# Load the JSON data
+with open('input.json', 'r') as f:
+    json_data = json.load(f)
+
+# Convert the JSON data to SARIF
+sarif_logger = SARIFLogger()
+for result in json_data:
+    sarif_logger.log(
+        rule_id=result.get('rule_id', ''),
+        level=result.get('level', ''),
+        message=result.get('message', ''),
+        uri=result.get('uri', ''),
+        start=result.get('start', {}),
+        end=result.get('end', {})
+    )
+sarif_data = sarif_logger.to_dict()
+
+# Write the SARIF data to a file
+with open('output.sarif', 'w') as f:
+    json.dump(sarif_data, f, indent=4)
