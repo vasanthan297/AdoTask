@@ -47,3 +47,41 @@
         for work_item_ref in query_result:
           work_item = work_item_client.get_work_item(work_item_ref.id)
           print(f"{work_item.id} - {work_item.fields['System.Title']} - {work_item.fields['System.State']}")
+          
+          
+          
+          
+          
+ 
+ 
+
+
+.................................................................................................................. 
+ 
+from azure.devops.connection import Connection
+from msrest.authentication import BasicAuthentication
+from azure.devops.v6_0.work_item_tracking.models import JsonPatchOperation, Operation
+
+# Set up authentication and connection to the Azure DevOps organization
+personal_access_token = 'your_personal_access_token'
+organization_url = 'https://dev.azure.com/your_organization'
+credentials = BasicAuthentication('', personal_access_token)
+connection = Connection(base_url=organization_url, creds=credentials)
+
+# Define the ID of the work item to be deleted
+work_item_id = 12345
+
+# Get a reference to the work item tracking client
+wit_client = connection.clients.get_work_item_tracking_client()
+
+# Define the JSON patch operation to delete the work item
+delete_operation = JsonPatchOperation()
+delete_operation.op = Operation.REMOVE.value
+delete_operation.path = '/fields/System.Id'
+delete_operation.value = str(work_item_id)
+
+# Apply the patch operation to the work item
+wit_client.update_work_item(patch_document=[delete_operation], id=work_item_id)
+
+print(f"Work item {work_item_id} has been deleted.")
+
