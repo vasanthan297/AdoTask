@@ -85,3 +85,11 @@ wit_client.update_work_item(patch_document=[delete_operation], id=work_item_id)
 
 print(f"Work item {work_item_id} has been deleted.")
 
+
+
+
+work_item = work_item_client.get_work_item(6, project_name, expand='All')
+
+# List all fields of the work item
+for field in work_item.fields:
+    print(f'{field}: {work_item.fields[field]}')
