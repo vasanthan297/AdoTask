@@ -93,3 +93,26 @@ work_item = work_item_client.get_work_item(6, project_name, expand='All')
 # List all fields of the work item
 for field in work_item.fields:
     print(f'{field}: {work_item.fields[field]}')
+
+
+
+status_patch = JsonPatchOperation(
+    op='replace',
+    path='/fields/System.State',
+    value='Done'
+)
+
+reason_patch = JsonPatchOperation(
+    op='add',
+    path='/fields/System.Reason',
+    value='Completed'
+)
+
+patch_document = [status_patch, reason_patch]
+
+
+updated_work_item = work_item_client.update_work_item(
+    document=patch_document,
+    id=6
+)
+
