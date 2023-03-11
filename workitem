@@ -124,3 +124,9 @@ future_date = today + timedelta(days=30)  # Get the date 30 days from today's da
 
 print(future_date)  # Print the future date
 
+from datetime import datetime
+
+string_date = "2023-03-02T09:07:57.543Z"
+datetime_obj = datetime.fromisoformat(string_date[:-1])
+
+print(datetime_obj)
