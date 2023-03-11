@@ -116,3 +116,11 @@ updated_work_item = work_item_client.update_work_item(
     id=6
 )
 
+
+from datetime import datetime, timedelta
+
+today = datetime.today()  # Get today's date
+future_date = today + timedelta(days=30)  # Get the date 30 days from today's date
+
+print(future_date)  # Print the future date
+
