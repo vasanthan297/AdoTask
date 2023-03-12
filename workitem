@@ -130,3 +130,10 @@ string_date = "2023-03-02T09:07:57.543Z"
 datetime_obj = datetime.fromisoformat(string_date[:-1])
 
 print(datetime_obj)
+
+
+
+
+date_object = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")
+
+
