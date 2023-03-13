@@ -137,3 +137,8 @@ print(datetime_obj)
 date_object = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")
 
 
+
+headers = {
+    "Authorization": "Bearer <access_token>",
+    "Content-Type": "application/json"
+}
