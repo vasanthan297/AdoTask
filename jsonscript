@@ -1,0 +1,54 @@
+import json
+
+json_dict = {
+    "security": {
+        "project": "",
+        "repo": "",
+        "status": {
+            "sast":  [],
+            "nexus": [],
+            "aqua":  [],
+        }
+    }
+}
+
+# Writing the JSON object to a file
+with open('example.json', 'w') as f:
+    json.dump(json_dict, f)
+
+
+
+# Convert the dictionary to a JSON string
+json_str = json.dumps(json_dict)
+
+# Reading the JSON object from the file
+with open('example.json', 'r') as f:
+    json_obj = json.load(f)
+
+#print(json_obj)
+
+id1= 111
+id2 = 222
+id3= 333
+id4 = 444
+id5 = 555
+
+
+
+    # Add the items to the "sast" list
+json_dict["security"]["project"] = "test1"
+json_dict["security"]["repo"] = "myrepo-name"
+json_dict["security"]["status"]["sast"].append({"wiid": id1, "title": "issue"})
+json_dict["security"]["status"]["sast"].append({"wiid": id2, "title": "bug"})
+json_dict["security"]["status"]["nexus"].append({"wiid": id3, "title": "nexusIssue"})
+
+json_dict["security"]["status"]["aqua"].append({"wiid": id4, "title": "Aqua"})
+json_dict["security"]["status"]["aqua"].append({"wiid": id5, "title": "new title"})
+
+
+
+# Convert the dictionary to a JSON string
+json_str = json.dumps(json_dict)
+
+
+print(json_str)
